@@ -49,6 +49,7 @@ def main():
         annotate(dataResult[:, 0], dataResult[:, 1])
 
         plt.savefig(plotFileName)
+        print(F'Saved plot as {plotFileName}')
         plt.figure()
 
 
