@@ -31,7 +31,7 @@
     $ py app.py [start_data_dir_path] [result_data_dir_path] [output_plot_dir_path]
     ```
     \* number of files and their names in **start_data_dir_path** should be same in **result_data_dir_path** \
-    \* example data can be found in directory **text/**
+    \* example data can be found in directory **test/**
     ##### Example
     ```
     $ py app.py test/data test/results test/plots
