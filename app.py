@@ -6,8 +6,8 @@ import sys
 
 
 def annotate(xs, ys):
-    for x, y in zip(xs, ys):
-        label = "{:.3f},{:.3f}".format(x, y)
+    for i, (x, y) in enumerate(zip(xs, ys)):
+        label = i
 
         plt.annotate(label,
                      (x, y),
@@ -18,8 +18,8 @@ def annotate(xs, ys):
 
 def main():
     if len(sys.argv) != 4:
-        print("Expected 3 args, got %d" % (len(sys.argv)-1))
-        exit(-1)
+        print("Expected 3 args, got %d" % (len(sys.argv) - 1))
+        return -1
 
     dirPath = sys.argv[1]
     resultPath = sys.argv[2]
@@ -42,11 +42,12 @@ def main():
         dataResult[w, :] = dataResult[0, :]
 
         plt.plot(data[:, 0], data[:, 1], 'k.',
-                 dataResult[:, 0], dataResult[:, 1], 'r-')
+                 dataResult[:, 0], dataResult[:, 1], 'r-o')
 
         plt.plot(dataResult[0, 0], dataResult[0, 1], 'go', markersize=8.0)
 
-        annotate(dataResult[:, 0], dataResult[:, 1])
+        if len(data[:, 0]) < 1000:
+            annotate(data[:, 0], data[:, 1])
 
         plt.savefig(plotFileName)
         print(F'Saved plot as {plotFileName}')
